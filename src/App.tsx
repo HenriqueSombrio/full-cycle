@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FormEvent, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log(nameRef.current?.value);
+    console.log(emailRef.current?.value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={onSubmit}>
+        <div>
+          <label htmlFor="nome">Nome</label>
+          <input type="text" ref={nameRef } id="nome" name="nome"/>
+        </div>
+        <div>
+          <label htmlFor="email">E-mail</label>
+          <input type="email" ref={emailRef} id="email" name="email"/>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 }
