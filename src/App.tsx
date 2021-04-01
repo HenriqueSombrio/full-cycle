@@ -7,7 +7,10 @@ function App() {
 
   return (
     <div className="App">
-      <Title color="green">
+      <Title color="green" onClick={() => alert('Clicou')}>
+        Exemplo React
+      </Title>
+      <Title>
         Exemplo React
       </Title>
       <Form />
